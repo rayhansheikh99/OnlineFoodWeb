@@ -16,7 +16,7 @@ SECRET_KEY = 'hz8(ou+a7kq72y2@$*w1uhmo)dy_g++9lul1p*+mw%=jgw5(5f'
 # ALLOWED_HOSTS = []
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1','']
+ALLOWED_HOSTS = ['127.0.0.1','fooodwebb.herokuapp.com']
 
 
 
