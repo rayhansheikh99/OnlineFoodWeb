@@ -20,11 +20,16 @@ from django.conf.urls.static import static
 from . import views
 from django.contrib.auth import views as auth_views
 from shop.views import ChangePasswordView
+from django.views.static import serve
+from django.conf.urls import url
 
 urlpatterns = [
     path('', views.index,  name='index'),
     path('shop/', include('shop.urls')),
     path('admin/', admin.site.urls),
     path('password-change/', ChangePasswordView.as_view(), name='password_change'),
+
+    url(r'^media/(?P<path>.*)$', serve,{'document_root':       settings.MEDIA_ROOT}), 
+    url(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}), 
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
