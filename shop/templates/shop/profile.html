@@ -1,0 +1,53 @@
+{% extends 'shop/basic.html' %}
+{% load crispy_forms_tags %}
+
+{% block css %}
+
+.rounded-circle {
+    border-radius: 0%!important;
+   
+    height:100px;
+}
+
+.marginn{
+   margin-top: 120px;
+}
+
+.colorback{
+  background-color: #e8edee;
+  margin-bottom:50px;
+  
+}
+
+{% endblock%}
+
+{% block body %}
+  
+  <div class="container">
+    <div class="marginn">
+      <div class="media row col-md-6 offset-md-3">
+        <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
+      </div> 
+      <br>
+      <!-- FORM HERE -->
+      <div class=" row offset-md-3 col-md-6 colorback">
+        <form method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <fieldset class="form-group">
+              <legend class="border-bottom mb-4">Profile Info</legend>
+              <h2 class="account-heading">{{ user.username }}</h2> 
+              <h5 class="text-secondary">{{ user.email }}</h5> <br>
+              {{ u_form|crispy }} <!-- User form -->
+              <button> <a href="{% url 'password_change' %}">Change Password</a></button>
+              {{ p_form|crispy }} <!-- Profile form -->
+              
+          </fieldset>
+          <div class="form-group">
+            <button class="btn btn-outline-info" type="submit">Update Profile</button>
+          </div>
+        </form>
+      </div>
+    </div>  
+  </div> 
+  
+{% endblock %}
